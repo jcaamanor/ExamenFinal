@@ -1,0 +1,38 @@
+body {
+    font-size: 20px;
+}
+
+.logo {
+    max-width: 100px;
+    margin-right: 100px;
+}
+
+.enc {
+    background-color: rgb(206, 212, 214);
+    padding-right: 900px;
+}
+
+.formato1 {
+    font-size: 18px;
+}
+
+.container2 {
+    background-image: url("../img/banner.png");
+    background-size: cover;
+    height: 500px;
+    animation: efect 5s ease-in-out infinite alternate;
+}
+
+@keyframes efect {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -100px 0;
+    }
+}
+
+.text1 {
+    padding-left: 100px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
