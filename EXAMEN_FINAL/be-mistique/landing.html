@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+
+
+    <!-- Add this right after opening body tag -->
+<video class="background-video" autoplay muted loop playsinline>
+    <source src="sitioweb/assets/images/login.mp4" type="video/mp4">
+</video>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <h1>Be-Mistique</h1>
+            </div>
+            <ul class="nav-links"></ul>
+        </nav>
+    </header>
+
+    <!-- Loader overlay with Lottie -->
+    <div class="loader-overlay">
+        <div class="lottie-container"></div>
+        <div class="loader-text">Estamos procesando su solicitud...</div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="contenido">
+        <h2>Be-Mistique Shopping Hub</h2>
+        <div class="botones">
+            <button class="boton" data-href="sitioweb/sitio_index.html">Sitio Web</button>
+            <button class="boton" data-href="appweb/app_index.html">App Web</button>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+
+    <footer class="footer">
+        <!-- Footer content remains the same -->
+
+    <!-- Scripts - Order matters -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="landing.js"></script>
+</body>
+</html>
