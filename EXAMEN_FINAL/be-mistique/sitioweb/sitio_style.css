@@ -593,3 +593,246 @@ img {
     height: auto;
     display: block;
 }
+/* End Of Lightbox Modal */
+
+
+/* Estilos para el banner emergente */
+.popup-banner {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.alertaRoja {
+    color: red;
+}
+
+.alertaVerde {
+    color: green;
+}
+
+/* Fin de los estilos para el banner emergente */
+
+/* Estilos para el banner emergente */
+.alertaRoja {
+    color: red;
+}
+
+.alertaVerde {
+    color: green;
+}
+
+/* Fin de los estilos para el banner emergente */
+
+/* Estilos para el banner emergente */
+.popup-banner {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 255, 0); /* Azul semitransparente */
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.popup-content {
+    background-color: rgb(2, 62, 138);
+    padding: 40px;
+    border: 2px solid red; /* Bordes rojos */
+    border-radius: 30px;
+    text-align: center;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+    color: white; /* Cambiar el color de las letras a blanco */
+}
+
+.popup-content h2, .popup-content p {
+    color: white; /* Asegurarse de que los encabezados y párrafos sean blancos */
+}
+
+.popup-content input[type="email"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.popup-content input[type="button"] {
+    background-color: red; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.popup-content input[type="button"]:hover {
+    background-color: darkred; /* Color de fondo del botón al pasar el ratón */
+}
+
+.popup-banner.fade-in {
+    opacity: 1;
+    transform: scale(1); /* Escala normal */
+}
+
+.popup-banner.fade-out {
+    opacity: 0;
+    transform: scale(0.8); /* Escala más pequeña */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+
+
+/* Estilos para el botón de envío del formulario emergente */
+#btnSendSubscription {
+    background-color: red; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#btnSendSubscription:hover {
+    background-color: darkred; /* Color de fondo del botón al pasar el ratón */
+}
+
+
+
+#btnSendContact {
+    background-color: red; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#btnSendContact:disabled {
+    background-color: grey; /* Color de fondo del botón deshabilitado */
+    cursor: not-allowed;
+}
+
+#btnSendContact:hover:enabled {
+    background-color: darkred; /* Color de fondo del botón al pasar el ratón */
+}
+
+
+        /* Estilos para las pestañas */
+/* Estilos para las pestañas */
+.tabs {
+    display: flex;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.tabs div {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+    background-color: #f1f1f1;
+    transition: background-color 0.3s;
+}
+
+.tabs div.active {
+    background-color: #ddd;
+}
+
+.tabs div:hover {
+    background-color: #ddd;
+}
+
+/* Estilos para las secciones de pestañas */
+.tab {
+    display: none;
+}
+
+.tab.active {
+    display: block;
+}
+
+/* Estilos para los formularios */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-container input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-container input[type="submit"]:hover {
+    background-color: #45a049;
+}

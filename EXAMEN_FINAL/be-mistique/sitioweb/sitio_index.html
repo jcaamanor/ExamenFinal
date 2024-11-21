@@ -10,8 +10,91 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <!-- Stylesheet Link -->
     <link rel="stylesheet" href="sitio_style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://kit.fontawesome.com/fa2ce6a4c8.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert2 CDN -->
 
+    <!-- Include the EmailJS library -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function() {
+        emailjs.init("J4PMBE-SURn2-tei3"); // Replace with your actual EmailJS user ID
+      })();
+    </script>
     <title>BE-MISTIQUE | Perfume-Shop</title>
+    <style>
+        /* Estilos para las pestañas */
+        .tabs {
+            display: flex;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .tabs div {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            margin-right: 5px;
+            background-color: #f1f1f1;
+            transition: background-color 0.3s;
+        }
+
+        .tabs div.active {
+            background-color: #ddd;
+        }
+
+        .tabs div:hover {
+            background-color: #ddd;
+        }
+
+        /* Estilos para las secciones de pestañas */
+        .tab {
+            display: none;
+        }
+
+        .tab.active {
+            display: block;
+        }
+
+        /* Estilos para los formularios */
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 
 <body>
@@ -156,46 +239,63 @@
                 </div>
             </div>
 
-            <!-- Contact Section -->
-            <div id="contact">
+            <!-- Tabs Section -->
+            <div class="tabs">
+                <div id="contactTab" class="active">Contacto</div>
+                <div id="surveyTab">Encuesta</div>
+            </div>
+
+            <div id="contactSection" class="tab active form-container">
                 <h2>Contact Us</h2>
                 <p>Feel free to send us a message about anything. We always appreciate you.</p>
-                <form>
-                    <label for="name">Name</label> <br>
-                    <input type="text" name="" id="name" placeholder="Enter your name" required>
+                <form id="contactForm">
+                    <label for="nombreTxt">Name</label> <br>
+                    <input type="text" name="nombre" id="nombreTxt" placeholder="Enter your name" required>
                     <br>
-                    <label for="email">Email</label> <br>
-                    <input type="email" name="" id="email" placeholder="Enter your email" required>
+
+                    <label for="apellidoTxt">Last Name</label> <br>
+                    <input type="text" name="apellido" id="apellidoTxt" placeholder="Enter your last name" required>
                     <br>
-                    <label for="message">Message</label><br>
-                    <textarea name="" id="message" placeholder="Enter your message" required></textarea>
+
+                    <label for="emailTxt">E-mail</label> <br>
+                    <input type="email" name="email" id="emailTxt" placeholder="Enter your email" required>
                     <br>
-                    <button type="submit">Send</button>
+
+                    <label for="numberTxt">Phone Number</label> <br>
+                    <input type="text" name="numero" id="numberTxt" placeholder="Enter your phone number" required>
+                    <br>
+
+                    <label for="mensajeTxt">Your Message for Be-Mistique</label><br>
+                    <textarea name="mensaje" id="mensajeTxt" placeholder="Enter your message" required></textarea>
+                    <br>
+                    <input id="btnSendContact" type="submit" value="Send">
+                    <p id="mensajeAlertContact"></p>
                 </form>
             </div>
 
-                         <!-- Existing content -->
+            <div id="surveySection" class="tab form-container">
+                <h2>Formulario de Encuesta Web</h2>
+                <form id="surveyForm">
+                    <label for="satisfaction">¿Cuán satisfecho está con nuestro sitio web?</label><br>
+                    <input type="radio" id="satisfaction1" name="satisfaction" value="1"> 1
+                    <input type="radio" id="satisfaction2" name="satisfaction" value="2"> 2
+                    <input type="radio" id="satisfaction3" name="satisfaction" value="3"> 3
+                    <input type="radio" id="satisfaction4" name="satisfaction" value="4"> 4
+                    <input type="radio" id="satisfaction5" name="satisfaction" value="5"> 5<br><br>
 
-            <!-- Lightbox Gallery -->
-            <div class="gallery">
-                <a href="assets/images/product3.png" class="lightbox">
-                    <img src="assets/images/product3.png" alt="Image 1">
-                </a>
-                <a href="assets/images/product1.png" class="lightbox">
-                    <img src="assets/images/product1.png" alt="Image 2">
-                </a>
+                    <label for="productFound">¿Logró encontrar el producto que necesita?</label><br>
+                    <input type="radio" id="productFoundYes" name="productFound" value="yes"> Sí
+                    <input type="radio" id="productFoundNo" name="productFound" value="no"> No<br><br>
 
-                </a>
-                <a href="assets/images/video.mp4" class="lightbox">
-                    <img src="assets/images/videopreview.jpeg" alt="Video 1">
-                </a>
-             
-            </a>
-            <a href="assets/images/product2.png" class="lightbox">
-                <img src="assets/images/product2.png" alt="Image 2">
-            </a>
+                    <label for="recommend">¿Recomendaría Be-Mistique a otra persona?</label><br>
+                    <input type="radio" id="recommendYes" name="recommend" value="yes"> Sí
+                    <input type="radio" id="recommendNo" name="recommend" value="no"> No<br><br>
 
+                    <label for="comments">Comentarios adicionales:</label><br>
+                    <textarea id="comments" name="comments" rows="4" cols="50"></textarea><br><br>
 
+                    <input type="submit" value="Enviar">
+                </form>
             </div>
 
             <!-- Lightbox Modal -->
@@ -209,42 +309,110 @@
                     </video>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            <!-- Banner emergente -->
+            <div id="popupBanner" class="popup-banner">
+                <div class="popup-content">
+                    <h2>Suscríbete para recibir ofertas mensuales y promociones flash</h2>
+                    <div id="lottie-animation" style="width: 100px; height: 100px; margin: 0 auto;"></div> <!-- Contenedor de la animación -->
+                    <form id="subscriptionForm">
+                        <input class="email" name="email" id="inscriptionTxt" type="email" placeholder="Tu email" required>
+                        <input id="btnSendSubscription" type="button" value="Enviar">
+                        <input id="btnSkipSubscription" type="button" value="Omitir">
+                        <p id="mensajeAlertSubscription"></p>
+                    </form>
+                </div>
+            </div>
         </main>
         <footer class="site-footer">Copyright &copy;2020 | All rights reserved | Created by Al Nahian</footer>
     </div>
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="sitioweb_index.js"></script>
     <script src="lightbox.js"></script>
+    <script src="suscripcion.js"></script>
+    <script src="contacto.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <script>
+
+        /* Función para enviar el formulario de contacto */ 
+     
+        document.getElementById('contactForm').onsubmit = function(event) {
+    event.preventDefault();
+    Swal.fire({
+        title: 'Muchas gracias por tus comentarios',
+        text: 'Tu mensaje fue enviado satisfactoriamente',
+        icon: 'success',
+        timer: 3000,
+        showConfirmButton: false,
+        willClose: () => {
+            document.getElementById('contactForm').reset();
+            window.location.href = '#featured'; // Redirigir a la sección featured
+        }
+    });
+};
+
+document.getElementById('surveyForm').onsubmit = function(event) {
+    event.preventDefault();
+    Swal.fire({
+        title: 'Muchas gracias por tus comentarios',
+        text: 'Tu mensaje fue enviado satisfactoriamente',
+        icon: 'success',
+        timer: 3000,
+        showConfirmButton: false,
+        willClose: () => {
+            document.getElementById('surveyForm').reset();
+      
+        }
+    });
+};
+
+
+
+document.getElementById('surveyForm').onsubmit = function(event) {
+    event.preventDefault();
+    Swal.fire({
+        title: 'Muchas gracias por tus comentarios',
+        text: 'Tu mensaje fue enviado satisfactoriamente',
+        icon: 'success',
+        timer: 3000,
+        showConfirmButton: false,
+        willClose: () => {
+            document.getElementById('surveyForm').reset();
+        }
+    });
+};
+
+
+document.getElementById('btnSkipSubscription').onclick = function() {
+        document.getElementById('popupBanner').style.display = 'none';
+    };
+
+        document.getElementById('contactTab').onclick = function() {
+            document.getElementById('contactSection').classList.add('active');
+            document.getElementById('surveySection').classList.remove('active');
+            this.classList.add('active');
+            document.getElementById('surveyTab').classList.remove('active');
+        };
+
+        document.getElementById('surveyTab').onclick = function() {
+            document.getElementById('surveySection').classList.add('active');
+            document.getElementById('contactSection').classList.remove('active');
+            this.classList.add('active');
+            document.getElementById('contactTab').classList.remove('active');
+        };
+
+
+        document.getElementById('contactLink').onclick = function(event) {
+            event.preventDefault();
+            document.getElementById('contactSection').classList.add('active');
+            document.getElementById('surveySection').classList.remove('active');
+            document.getElementById('contactTab').classList.add('active');
+            document.getElementById('surveyTab').classList.remove('active');
+            window.location.href = '#tabs'; // Desplazarse a la sección de las pestañas
+        };
+    </script>
+
 </body>
 </html>

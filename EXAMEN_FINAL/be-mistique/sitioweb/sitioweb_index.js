@@ -147,7 +147,6 @@ function changeLanguage(lang) {
     document.querySelector('button[type="submit"]').textContent = translations[lang].send;
 }
 
-
 document.addEventListener('DOMContentLoaded', function () {
     const lightboxLinks = document.querySelectorAll('.lightbox');
     const lightboxModal = document.getElementById('lightbox-modal');

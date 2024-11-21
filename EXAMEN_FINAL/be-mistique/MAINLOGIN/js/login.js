@@ -11,13 +11,39 @@ document.getElementById("btn-login").addEventListener("click", login);
 function validation_alert(ptext) {
     swal.fire({
         /* icon: "error",*/
-        title: "Verificar la entrada de datos",
+        title: "Por favor verifica los datos ingresados.",
         text: ptext,
-        confirmButtonText: "Intentar de nuevo",
+        confirmButtonText: "Intentar nuevamente",
         confirmButtonColor: "#0063be",
-        html: '<iframe src="https://lottie.host/embed/686fa015-3d68-4008-b0a2-4b9bacbdf5a9/62AJylBEcS.json"></iframe> <br><p>' + ptext + " </p>",
+        html: '<div id="lottie-container" style="width: 200px; height: 200px;"></div> <br><p>' + ptext + " </p>",
+        didOpen: () => {
+            // Destruir cualquier animación existente en el contenedor
+            const container = document.getElementById('lottie-container');
+            if (container) {
+                // Destruir la animación existente
+                lottie.destroy();
+                // Limpiar el contenedor
+                while (container.firstChild) {
+                    container.removeChild(container.firstChild);
+                }
+            }
+            // Cargar la nueva animación
+            const animation = lottie.loadAnimation({
+                container: container,
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: './json/error1.json' // Ruta al archivo JSON de la animación
+            });
+            // Ajustar la velocidad de la animación al doble
+            animation.setSpeed(2);
+        }
     });
 }
+
+
+
+
 
 //funcion login
 function login() {
@@ -38,7 +64,7 @@ function login() {
         document.getElementById(input_id[i]).classList.remove("error");
         if (input[i] == "") {
             //este es el texto que llevar el parametro de la funcion validación_alert
-            text = "Los campos requeridos NO pueden estar vacios.";
+            text = "Validar si hay espacios vacios en los formularios.";
             //carga la funcion
             validation_alert(text);
             document.getElementById(input_id[i]).classList.add("error");
@@ -49,16 +75,39 @@ function login() {
     //validacion si los campos username y password son iguales
     if (error_count == 0) {
         if (user_input == username && pass_input == password) {
-            Swal.fire({
-                //icon: "success",
-                title: "Credenciales correctas",
-                showConfirmButton: false,
-                //milisegundos equivalen a 5seg
-                timer: 2000,
-                html: '<iframe width="320" height="240" src="https://lottie.host/embed/80ea6b1a-b452-4ac5-bbf8-b203009dd7b4/FaUg2od8ee.json"></iframe> <br><br><p>Un momento!</p>',
 
+            Swal.fire({
+                title: '<h2 style="text-align: center;">Bienvenido de vuelta a Be-Mistique!</h2>',
+                html: '<div id="lottie-container" style="width: 100%; height: 200px;"></div><br>Estamos cargando los datos de tu cuenta.<br><br><progress value="0" max="100" id="progressBar"></progress>',
+                timer: 5000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    const progressBar = Swal.getHtmlContainer().querySelector('#progressBar');
+                    timerInterval = setInterval(() => {
+                        progressBar.value = (Swal.getTimerLeft() / 50);
+                    }, 100);
+
+                    lottie.loadAnimation({
+                        container: document.getElementById('lottie-container'),
+                        renderer: 'svg',
+                        loop: true,
+                        autoplay: true,
+                        path: 'json/passed.json',
+                        rendererSettings: {
+                            preserveAspectRatio: 'xMidYMid slice'
+                        }
+                    }).setSpeed(0.1); // Ajusta la velocidad de la animación (0.5 es la mitad de la velocidad normal)
+
+                    Swal.showLoading();
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
             }).then(() => {
-                    window.location.href = 'http://127.0.0.1:5501/X%20EXAMEN%20FINAL/be-mistique/landing.html'; // Redirige a la página de proyectos
+                window.location.href = '../landing.html';
+         
+
+
                 // aca va el landing page
             });
         } else {
